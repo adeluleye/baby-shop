@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
@@ -11,9 +12,15 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnDestroy {
   subscription: Subscription;
 
-  constructor(private auth: AuthService, router: Router) {
-    this.subscription =  auth.user$.subscribe(user => {
+  constructor(
+    private userService: UserService,
+    private auth: AuthService,
+    router: Router
+  ) {
+      this.subscription =  auth.user$.subscribe(user => {
       if (user) {
+        userService.save(user);
+
         const returnUrl = localStorage.getItem('returnUrl');
         router.navigateByUrl(returnUrl);
       }
