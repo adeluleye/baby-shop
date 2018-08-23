@@ -1,3 +1,4 @@
+import { CategoryService } from './category.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -75,6 +76,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
   providers: [
     AuthService,
     UserService,
+    CategoryService,
     AuthGuard,
     AdminAuthGuard
   ],
