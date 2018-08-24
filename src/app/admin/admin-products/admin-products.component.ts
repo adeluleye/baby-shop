@@ -1,3 +1,4 @@
+import { Product } from './../../models/product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../product.service';
 import { map } from 'rxjs/operators';
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  products: any[];
+  products: Product[];
   filteredProducts: any[];
   subscription: Subscription;
 
@@ -22,11 +23,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe(products => this.filteredProducts = this.products = products);
-    /*.pipe(
-      map(products =>
-        products.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );*/
   }
 
   filter(query: string) {
