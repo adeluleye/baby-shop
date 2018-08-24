@@ -15,4 +15,16 @@ export class ProductService {
   getAll() {
     return this.db.list('/products');
   }
+
+  getProduct(productId) {
+    return this.db.object('/products/' + productId);
+  }
+
+  updateProduct(productId, product) {
+    return this.db.object('/products/' + productId).update(product);
+    /*const afObject = this.db.object('/courses/' + course.$key);
+    afObject.set(course.name + 'UPDATED');
+    const objectObservable = afObject.snapshotChanges();
+    objectObservable.subscribe();*/
+  }
 }
