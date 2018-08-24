@@ -22,9 +22,9 @@ export class ProductService {
 
   updateProduct(productId, product) {
     return this.db.object('/products/' + productId).update(product);
-    /*const afObject = this.db.object('/courses/' + course.$key);
-    afObject.set(course.name + 'UPDATED');
-    const objectObservable = afObject.snapshotChanges();
-    objectObservable.subscribe();*/
+  }
+
+  deleteProduct(productId) {
+    return this.db.object('/products/' + productId).remove();
   }
 }
