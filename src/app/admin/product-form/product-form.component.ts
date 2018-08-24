@@ -3,6 +3,7 @@ import { CategoryService } from '../../category.service';
 import { AngularFireList } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -14,7 +15,10 @@ export class ProductFormComponent implements OnInit {
 
   categoriesRef: AngularFireList<any>;
 
-  constructor(categoryService: CategoryService, private productService: ProductService) {
+  constructor(
+    private router: Router,
+    private categoryService: CategoryService,
+    private productService: ProductService) {
     this.categoriesRef = categoryService.getCategories();
     // Use snapshotChanges().map() to store the key
     this.categories$ = this.categoriesRef.snapshotChanges().pipe(
@@ -27,6 +31,7 @@ export class ProductFormComponent implements OnInit {
   save(product) {
     // console.log(product);
     this.productService.create(product);
+    this.router.navigate(['/admin/products']);
   }
 
   ngOnInit() {
