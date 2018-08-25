@@ -23,7 +23,7 @@ export class ProductFormComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService) {
-    this.categoriesRef = categoryService.getCategories();
+    this.categoriesRef = categoryService.getAll();
     // Use snapshotChanges().map() to store the key
     this.categories$ = this.categoriesRef.snapshotChanges().pipe(
       map(categories$ =>
