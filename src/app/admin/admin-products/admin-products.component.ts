@@ -11,8 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  // products: Product[] = [];
-  products: any[] = [];
+  products: Product[] = [];
   filteredProducts: any[];
   subscription: Subscription;
 
@@ -27,7 +26,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         map(products =>
           products.map(c => ({
             key: c.payload.key,
-            ...c.payload.val() }))
+            ...c.payload.val() as Product }))
         )
       )
       .subscribe(products => {
@@ -37,6 +36,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       });
   }
 
+  // map(item$ =>
+  //   item$.map(c => {
+  //       const data = c.payload.val() as Product;
+  //       const id = c.payload.key;
+  //       return { id, ...data };
+  //   })
   // private initializeTable(products: Product[]) {
   //   this.tableResource = new DataTableResource(products);
   //   this.tableResource.query({ offset: 0 })

@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../product.service';
 import { Component } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { Product } from '../models/product';
 
 @Component({
@@ -11,14 +11,22 @@ import { Product } from '../models/product';
 })
 export class ProductsComponent {
   // products: Product[];
-  products: any[] = [];
+  products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
 
   constructor(
     route: ActivatedRoute,
     productService: ProductService) {
-    productService.getAll().valueChanges()
+    productService.getAll().snapshotChanges()
+      .pipe(
+        map(products =>
+          products.map(c => ({
+            key: c.payload.key,
+            ...c.payload.val() as Product
+          }))
+        )
+      )
       .pipe(
         switchMap(products => {
           this.products = products;
