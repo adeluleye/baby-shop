@@ -1,7 +1,7 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Product } from './../models/product';
 import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,9 +17,6 @@ export class ProductCardComponent {
   @Input('shopping-cart') shoppingCart;
 
   constructor(private shoppingCartService: ShoppingCartService) {
-    if (! this.shoppingCart) {
-      this.shoppingCart = {};
-    }
   }
 
   addToCart() {
@@ -33,10 +30,7 @@ export class ProductCardComponent {
   getQuantity() {
     if (!this.shoppingCart) { return 0; }
 
-    // const item = this.shoppingCart.items[this.product.key];
-    const item = this.shoppingCart.payload.child('items').ref;
-
-    // console.log(item);
+    const item = this.shoppingCart.items[this.product.key];
 
     return item ? item.quantity : 0;
 
