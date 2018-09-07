@@ -1,9 +1,11 @@
 import { ShoppingCartItem } from './shopping-cart-item';
 
 export class ShoppingCart {
-    // items: ShoppingCartItem[];
     constructor(public items: ShoppingCartItem[]) {}
 
+    get productIds() {
+        return Object.keys(this.items);
+    }
     get totalItemsCount() {
         let count = 0;
         // tslint:disable-next-line:forin

@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  x = <any>{};
   constructor(private db: AngularFireDatabase) { }
 
   private create() {
