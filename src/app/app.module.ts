@@ -1,3 +1,4 @@
+import { OrderService } from './order.service';
 import { CategoryService } from './category.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { environment } from './../environments/environment';
@@ -96,6 +97,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     CategoryService,
     ProductService,
     ShoppingCartService,
+    OrderService,
     AuthGuard,
     AdminAuthGuard
   ],
