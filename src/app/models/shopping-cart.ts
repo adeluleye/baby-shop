@@ -3,6 +3,7 @@ import { ShoppingCartItem } from './shopping-cart-item';
 
 export class ShoppingCart {
     items: ShoppingCartItem[] = [];
+    // items: any = {};
     constructor(private itemsMap: { [productId: string]: ShoppingCartItem }) {
         this.itemsMap = itemsMap || {};
 
