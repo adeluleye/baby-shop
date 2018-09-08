@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
@@ -7,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild([])
   ],
   declarations: [

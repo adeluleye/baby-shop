@@ -12,8 +12,6 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
     RouterModule.forChild([
       {
