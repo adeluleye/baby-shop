@@ -11,7 +11,7 @@ export class AdminOrdersComponent {
   orders$;
 
   constructor(private orderService: OrderService) {
-    this.orders$ = orderService.getOrders();
+    this.orders$ = orderService.getOrders().valueChanges();
   }
 
 }
