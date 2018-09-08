@@ -61,14 +61,18 @@ export class ShoppingCartService {
     item$.snapshotChanges()
       .pipe(take(1))
       .subscribe(item => {
-        item$.update({
-          // key: item.payload,
-          title: product.title,
-          imageUrl: product.imageUrl,
-          price: product.price,
-          product: product,
-          quantity: (item.payload.child('quantity').val() || 0) + change
-        });
+        const quantity = (item.payload.child('quantity').val() || 0) + change;
+        if (quantity === 0) {
+          item$.remove();
+        } else { item$.update({
+            // key: item.payload,
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
+            product: product,
+            quantity: quantity
+          });
+        }
     });
   }
 
