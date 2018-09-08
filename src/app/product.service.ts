@@ -1,6 +1,5 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
